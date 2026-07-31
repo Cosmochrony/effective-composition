@@ -1,2 +1,4 @@
-# Pinned environment for figure generation (numerical scripts are stdlib-only).
+# Pinned environment for figure generation (numerical scripts are stdlib-only and need no install).
+# Generated and verified under CPython 3.14.5; any CPython >= 3.9 reproduces the exact rational outputs.
 matplotlib==3.10.8
+numpy==2.4.0

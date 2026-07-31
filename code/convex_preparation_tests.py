@@ -77,6 +77,33 @@ def closure_report(name, W):
         print(f"    fail: mu_A={muA} x mu_B={muB}")
     print()
 
+def steered_variant_report(name, W):
+    """D1 audit: what happens when the type discipline is violated.
+
+    Local state families are here WRONGLY generated as margins of ALL joint conditionings
+    p^{U,V} (steered/conditional states), instead of local conditionings only.
+    The paper's Definition of local families forbids this; the report quantifies why:
+    on N3 the local families inflate from 3 to 5 states per side and the failing pairs
+    from 5 to 17, every extra witness being illegitimate."""
+    S_AB = [cond(W, U, V) for U in nonempty_subsets(A) for V in nonempty_subsets(B)]
+    S_AB_keys = {as_full(p) for p in S_AB}
+    SA_steered = [dict(t) for t in {tuple(sorted(margin_A(p).items())) for p in S_AB}]
+    SB_steered = [dict(t) for t in {tuple(sorted(margin_B(p).items())) for p in S_AB}]
+    fails = 0
+    for muA in SA_steered:
+        for muB in SB_steered:
+            prod = {(x, y): muA.get(x, F(0)) * muB.get(y, F(0)) for x in A for y in B
+                    if muA.get(x, F(0)) * muB.get(y, F(0))}
+            if as_full(prod) not in S_AB_keys:
+                fails += 1
+    print(f"  D1-violation variant ({name}): |S_A^steered|={len(SA_steered)}, "
+          f"|S_B^steered|={len(SB_steered)}, failing pairs={fails}")
+
 closure_report("N1 uniform, factorising", [[1, 1], [1, 1]])
 closure_report("N2 non-uniform, factorising (rank one)", [[1, 2], [2, 4]])
 closure_report("N3 rectangular support, correlated counting measure", [[1, 1], [1, 2]])
+
+print("== Steered-margin variant (violating the local-family type discipline D1) ==")
+steered_variant_report("N1", [[1, 1], [1, 1]])
+steered_variant_report("N2", [[1, 2], [2, 4]])
+steered_variant_report("N3", [[1, 1], [1, 2]])

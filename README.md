@@ -1,8 +1,8 @@
-# Effective Composition — Independent Effective Subsystems under Non-Injective Admissibility
+# Effective Composition — Support and Preparation Criteria for Independent Effective Subsystems
 
 This repository contains the source of the Cosmochrony paper
-*Independent Effective Subsystems under Non-Injective Admissibility: Exact Support and Preparation
-Criteria*, a working paper of the **non-injective foundations sub-programme**.
+*Finite Support and Preparation Criteria for Independent Effective Subsystems: A Contract for
+Non-Injective Admissibility*, a working paper of the **non-injective foundations sub-programme**.
 
 ## Central Question
 
@@ -16,9 +16,11 @@ On a substrate that is not supplied with a subsystem factorisation, none of this
 > possible?
 
 The paper names the missing piece as a transversal contract,
-$\mathrm{K4}\colon \mathsf{Admissibility} \longrightarrow \mathsf{Composable\ effective\ subsystems}$,
-closes its two prerequisite layers exactly in the finite case, and leaves its states-and-effects layer
-open.
+$\mathrm{K4}\colon \mathsf{Admissibility} \longrightarrow \mathsf{Composable\ effective\ subsystems}$.
+In the finite case it characterises the possibilistic (support) layer completely under the proposed
+contract, resolves the preparation layer for two reference classes (the full simplex and the strictly
+positive cylindrical conditionings), and leaves open both the general preparation layer and the
+states-and-effects layer.
 
 ## Core Results
 
@@ -49,10 +51,11 @@ No factorisation $\Omega \simeq \Omega_A \times \Omega_B$ is assumed.
   preparations; admitting them into the local state families manufactures spurious witnesses.
 
 The individual mathematical ingredients are elementary or standard; the contribution is their typed
-assembly into a necessary support-and-preparation contract for emergent effective subsystems over an
-admissibility structure without a supplied subsystem factorisation.
-The hypotheses abstract the composition problem motivated by the non-injective foundations programme;
-their realisation from the programme's axioms is not derived here.
+assembly into a proposed finite prerequisite contract of support and preparation criteria for emergent
+effective subsystems over an admissibility structure without a supplied subsystem factorisation.
+The theorems are exact within the contract; the physical necessity of the contract itself is proposed,
+not derived from an operational theory, and the realisation of the hypotheses from the programme's
+axioms is not derived here.
 
 ## Keywords
 
@@ -80,7 +83,7 @@ dependencies beyond the Python standard library:
 
 ```bash
 python3 code/possibilistic_blocks.py      # two-test classification of the five reference relations
-python3 code/convex_preparation_tests.py  # preparation families and the N1/N2/N3 matrices
+python3 code/convex_preparation_tests.py  # preparation families, N1/N2/N3, and the steered-margin variant
 ```
 
 No randomness is involved; every number in the paper is regenerated exactly.

@@ -8,12 +8,12 @@
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{geometry}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{doi}
 \geometry{margin=2.5cm}
 \setlength{\emergencystretch}{2em}
 \hypersetup{
-  pdftitle={Independent Effective Subsystems under Non-Injective Admissibility: Exact Support and Preparation Criteria},
+  pdftitle={Finite Support and Preparation Criteria for Independent Effective Subsystems: A Contract for Non-Injective Admissibility},
   pdfauthor={Jérôme Beau},
   pdfsubject={Support and preparation criteria for emergent effective subsystem composition},
   pdfkeywords={non-injective projection, effective subsystems, emergent composition, bicliques, rank one, steering}
@@ -45,13 +45,13 @@
 \newcommand{\SBloc}{\mathcal{S}_B^{\mathrm{loc}}}
 \newcommand{\rk}{\operatorname{rank}}
 
-\title{Independent Effective Subsystems under Non-Injective Admissibility:\\
-Exact Support and Preparation Criteria}
+\title{Finite Support and Preparation Criteria for Independent Effective Subsystems:\\
+A Contract for Non-Injective Admissibility}
 
 \author{J\'{e}r\^{o}me Beau\\
 \small Independent Researcher}
 
-\date{2026\\[2pt]\small Version 1.0.0}
+\date{2026\\[2pt]\small Version 1.0}
 
 \begin{document}
 
@@ -61,7 +61,10 @@ Exact Support and Preparation Criteria}
     A recurring assumption in emergent-physics programmes is that once a fundamental description is given,
     the decomposition of the world into independently preparable subsystems comes for free.
     We show that on a substrate not supplied with a subsystem factorisation this assumption splits into two
-    separate, checkable layers, and we characterise both exactly in the finite case.
+    separate, checkable layers.
+    In the finite case we characterise the possibilistic layer completely, and we resolve the preparation
+    layer for two reference classes: the full simplex of preparations, and the strictly positive
+    cylindrical-conditioning families; the general preparation layer remains open.
     The arena is a finite configuration set $\Om$ carrying a reference admissible subset, two effective
     projections $\PiA \colon \Om \to \OA$ and $\PiB \colon \Om \to \OB$ that are not assumed injective, and
     cylindrical admissibility conditions combined by intersection; no factorisation
@@ -81,11 +84,12 @@ Exact Support and Preparation Criteria}
     A type discipline runs through both layers: states of one side obtained by conditioning on the other are
     steered conditional states, not local preparations, and admitting them manufactures spurious witnesses.
     The individual mathematical ingredients are elementary or standard; the contribution is their typed
-    assembly into a necessary support-and-preparation contract for emergent effective subsystems over an
-    admissibility structure without a supplied subsystem factorisation.
+    assembly into a proposed finite prerequisite contract of support and preparation criteria for emergent
+    effective subsystems over an admissibility structure without a supplied subsystem factorisation.
     The hypotheses abstract the composition problem motivated by the non-injective foundations programme,
-    but their realisation from the programme's axioms is not derived here.
-    \emph{Interpretive reading (structural, not a result):} the absence of a fundamental subsystem
+    but their realisation from the programme's axioms is not derived here, and the physical necessity of
+    the contract itself is not derived from an operational theory.
+    \emph{Interpretive reading (structural, not a result):} the absence of a supplied subsystem
     factorisation does not forbid independent effective subsystems; it relocates their independence from an
     inherited property of the substrate to an emergent property of the projected support and of the
     preparation weights.
@@ -107,9 +111,11 @@ Exact Support and Preparation Criteria}
 
     The non-injective foundations programme~\cite{Beau2026m} describes observable physics as
     the image of a many-to-one projection from a relational substrate.
-    Non-injectivity is structurally forced for genuine emergence~\cite{Beau2026l}, and its observable
-    signatures include Bell-type correlations obtained without any subsystem decomposition of the underlying
-    configuration space~\cite{Beau2026b}.
+    Non-injectivity is structurally forced for genuine emergence~\cite{Beau2026l}, and a companion result
+    shows that Bell-type correlations can be obtained from a many-to-one projection without any subsystem
+    decomposition of the underlying configuration space~\cite{Beau2026b}; whether such correlations are a
+    signature of non-injectivity is a separate question, since a projection can be non-injective through
+    fibre multiplicity that is invisible to a factorising effective model.
     The substrate of that argument is not supplied with a subsystem factorisation: no split
     $\Om \simeq \Om_A \times \Om_B$ is imposed, and the measurement regions exist only at the level of
     observable descriptions.
@@ -147,8 +153,10 @@ Exact Support and Preparation Criteria}
       \mathsf{Composable\ effective\ subsystems}.
     \end{equation}
     The arrow is the open bridge; its source carries no supplied subsystem factorisation.
-    This paper closes two preconditions of~\eqref{eq:k4} --- the support layer and the preparation layer ---
-    and leaves open its states-and-effects layer: the construction of effect spaces, their bilinear pairing
+    This paper characterises the support precondition of~\eqref{eq:k4} completely under the proposed
+    contract, resolves its preparation precondition for two reference classes (the full simplex and the
+    strictly positive cylindrical conditionings), leaves the general preparation layer open, and leaves
+    open its states-and-effects layer: the construction of effect spaces, their bilinear pairing
     with states, local tomography, and any quantum tensor product.
 
   \subsection{Contributions}
@@ -182,8 +190,10 @@ Exact Support and Preparation Criteria}
     \end{enumerate}
 
     The individual mathematical ingredients are elementary or standard; the contribution is their typed
-    assembly into a necessary support-and-preparation contract for emergent effective subsystems over an
-    admissibility structure without a supplied subsystem factorisation.
+    assembly into a proposed finite prerequisite contract of support and preparation criteria for emergent
+    effective subsystems over an admissibility structure without a supplied subsystem factorisation.
+    The theorems are exact within the contract; the physical necessity of the contract itself is proposed,
+    not derived from an operational theory.
 
   \subsection{What this paper does not claim}
     \label{ssec:nonclaims}
@@ -259,8 +269,8 @@ Exact Support and Preparation Criteria}
 
     Fix condition sets $S_A \subseteq \OA$, $S_B \subseteq \OB$ and write
     $\mathcal{M} = \AC{C_A} \cap \AC{C_B}$ for the meet support.
-    Independent composability of the two selections requires two properties, which we deliberately separate
-    because they fail differently.
+    Within the proposed contract, independent composability of the two selections is tested by two
+    properties, which we deliberately separate because they fail differently.
 
     \begin{definition}[Test 1: margin stability]
       \label{def:test1}
@@ -632,8 +642,10 @@ Exact Support and Preparation Criteria}
     space, or local tomography; and a future spatial continuum would not by itself make disjoint regions
     independent subsystems, since the block condition and a preparation-closure condition would still have
     to hold.
-    In the vocabulary of~\eqref{eq:k4}: the support and preparation preconditions of K4 are now
-    characterised, its states-and-effects layer is untouched, and the corpus constructions that consume a
+    In the vocabulary of~\eqref{eq:k4}: the support precondition of K4 is characterised completely under
+    the proposed contract, its preparation precondition is resolved for the full simplex and for the
+    strictly positive cylindrical-conditioning class while remaining open in general, its
+    states-and-effects layer is untouched, and the corpus constructions that consume a
     composite~\cite{Beau2026q3,Beau2026entnote} retain their results conditionally on the supplied
     structure.
 
@@ -642,7 +654,7 @@ Exact Support and Preparation Criteria}
 
     The following reading is interpretation --- a structural way of situating the results --- and not itself
     a result.
-    The absence of a fundamental subsystem factorisation does not forbid independent effective subsystems.
+    The absence of a supplied subsystem factorisation does not forbid independent effective subsystems.
     It relocates their independence: from an inherited property of the substrate to an emergent property of
     the projected support (which pairs of outcomes are jointly possible) and of the preparation weights
     (which mixtures are jointly realisable).
@@ -678,7 +690,9 @@ Exact Support and Preparation Criteria}
       \item \texttt{code/possibilistic\_blocks.py} --- exhaustive two-test classification of the five
       relations of Table~\ref{tab:relations};
       \item \texttt{code/convex\_preparation\_tests.py} --- families and matrices of
-      Section~\ref{sec:preparation}, with the local state families of Definition~\ref{def:local-families}.
+      Section~\ref{sec:preparation}, with the local state families of Definition~\ref{def:local-families},
+      and the steered-margin variant violating the type discipline (five local states per side and
+      seventeen failing pairs on $N_3$).
     \end{itemize}
     Figure~\ref{fig:relations} is generated by the script \texttt{code/make\_figures.py}, under the pinned
     environment recorded in \texttt{code/requirements.txt}.
