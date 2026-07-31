@@ -1,0 +1,2 @@
+# Pinned environment for figure generation (numerical scripts are stdlib-only).
+matplotlib==3.10.8

@@ -1,0 +1,681 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{doi}
+\geometry{margin=2.5cm}
+\setlength{\emergencystretch}{2em}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\graphicspath{{out/}{../out/}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Om}{\Omega}
+\newcommand{\Aref}{\mathcal{A}_0}
+\newcommand{\AC}[1]{\mathcal{A}_{#1}}
+\newcommand{\OA}{O_A}
+\newcommand{\OB}{O_B}
+\newcommand{\PiA}{\Pi_A}
+\newcommand{\PiB}{\Pi_B}
+\newcommand{\PiAB}{\Pi_{AB}}
+\newcommand{\SAB}{\mathcal{S}_{AB}}
+\newcommand{\SAloc}{\mathcal{S}_A^{\mathrm{loc}}}
+\newcommand{\SBloc}{\mathcal{S}_B^{\mathrm{loc}}}
+\newcommand{\rk}{\operatorname{rank}}
+
+\title{Independent Effective Subsystems from Non-Injective Admissibility:\\
+Support and Preparation Criteria}
+
+\author{J\'{e}r\^{o}me Beau\\
+\small Independent Researcher}
+
+\date{2026\\[2pt]\small Version 1.0.0}
+
+\begin{document}
+
+  \maketitle
+
+  \begin{abstract}
+    A recurring assumption in emergent-physics programmes is that once a fundamental description is given,
+    the decomposition of the world into independently preparable subsystems comes for free.
+    We show that on a non-factorising substrate this assumption splits into two separate, checkable layers,
+    and we characterise both exactly in the finite case.
+    The arena is a finite configuration set $\Om$ carrying a reference admissible subset, two non-injective
+    effective projections $\PiA \colon \Om \to \OA$ and $\PiB \colon \Om \to \OB$, and cylindrical
+    admissibility conditions combined by intersection; no factorisation $\Om \simeq \Om_A \times \Om_B$ is
+    assumed at any point.
+    At the possibilistic layer, we prove that the pairs of local outcome sets on which joint interrogation
+    is margin-stable and jointly rectangular --- the \emph{independence blocks} --- are exactly the nonempty
+    rectangles (bicliques) contained in the projected support relation.
+    At the preparation layer, we prove a benchmark and a criterion.
+    The benchmark: on any block, if all probability measures on the underlying support are admissible
+    preparations, every joint outcome law, in particular every product law, lifts to the substrate; fundamental
+    non-factorisation alone therefore obstructs nothing.
+    The criterion: for the family of normalised cylindrical conditionings of a strictly positive reference
+    weight matrix $W$, closure under products of independently locally conditioned states holds if and only
+    if $W$ has rank one.
+    A minimal countermodel exhibits a complete rectangular support whose induced preparations are
+    nevertheless correlated: support rectangularity does not imply preparation independence.
+    A type discipline runs through both layers: states of one side obtained by conditioning on the other are
+    steered conditional states, not local preparations, and admitting them manufactures spurious witnesses.
+    The individual mathematical ingredients are elementary or standard; the contribution is their typed
+    assembly into a necessary support-and-preparation contract for emergent effective subsystems over a
+    non-factorising admissibility structure.
+    The hypotheses abstract the composition problem motivated by the non-injective foundations programme,
+    but their realisation from the programme's axioms is not derived here.
+    \emph{Interpretive reading (structural, not a result):} fundamental non-factorisation does not forbid
+    independent effective subsystems; it relocates their independence from an inherited property of the
+    substrate to an emergent property of the projected support and of the preparation weights.
+  \end{abstract}
+
+  \paragraph{Keywords.}
+    non-injective projection; effective subsystems; emergent composition; possibilistic independence;
+    bicliques; rank-one criterion; steering; local tomography.
+
+    \clearpage
+    \tableofcontents
+
+    \clearpage
+  \section{Introduction}
+  \label{sec:intro}
+
+  \subsection{The composition gap}
+    \label{ssec:gap}
+
+    The non-injective foundations programme~\cite{Beau2026m,Beau2026ninote} describes observable physics as
+    the image of a many-to-one projection from a relational substrate.
+    Non-injectivity is structurally forced for genuine emergence~\cite{Beau2026l}, and its observable
+    signatures include Bell-type correlations obtained without any subsystem decomposition of the underlying
+    configuration space~\cite{Beau2026b}.
+    The substrate of that argument is explicitly non-factorising: no split $\Om \simeq \Om_A \times \Om_B$
+    is imposed, and the measurement regions exist only at the level of observable descriptions.
+
+    This creates a gap on the other side of the ledger.
+    Laboratory physics is organised around \emph{independent subsystems}: systems that can be addressed
+    separately, prepared independently, and recombined, with joint statistics generated from local ones.
+    If the substrate does not factorise, none of this is given.
+    The present paper asks the resulting question in its sharpest finite form:
+
+    \begin{quote}
+      On a substrate that does not factorise, equipped with non-injective observable projections, when do
+      independently addressable and preparable effective subsystems exist --- and what exactly must be added,
+      at the support level and at the preparation level, for independent composition to be possible?
+    \end{quote}
+
+  \subsection{A missing transversal contract}
+    \label{ssec:k4}
+
+    The corpus already consumes an answer it does not yet possess.
+    The universal singlet construction builds bipartite proto-states inside a tensor product
+    $\chi_{2j+1} \otimes \chi_{2j+1}$ of representation spaces~\cite{Beau2026q3}, and the entanglement of
+    conjugate Weil pairs is defined on a bipartite space $W_c(n) \otimes W_{q-c}(n)$ introduced by an explicit
+    closure hypothesis~\cite{Beau2026entnote}.
+    In both cases the composite structure is supplied, not derived; these works are consumers of a
+    composition structure, and are cited here as such, not as evidence that the structure exists.
+
+    We name the missing piece as a transversal contract:
+    \begin{equation}
+      \label{eq:k4}
+      \mathrm{K4}\colon\quad
+      \text{non-factorising admissibility}
+      \;\dashrightarrow\;
+      \text{composable effective subsystems}.
+    \end{equation}
+    The dashed arrow is the open bridge.
+    This paper closes two preconditions of~\eqref{eq:k4} --- the support layer and the preparation layer ---
+    and leaves open its states-and-effects layer: the construction of effect spaces, their bilinear pairing
+    with states, local tomography, and any quantum tensor product.
+
+  \subsection{Contributions}
+    \label{ssec:contributions}
+
+    All results are finite and exact, and are validated by exhaustive enumeration scripts distributed with
+    the paper (Appendix~\ref{app:repro}).
+
+    \begin{enumerate}
+      \item \textbf{Block theorem (Theorem~\ref{thm:blocks}).}
+      Under cylindrical conditions with conjunction by intersection, the local outcome-set pairs passing the
+      two composability tests --- margin stability and joint rectangularity --- are exactly the nonempty
+      rectangles $S_A \times S_B \subseteq R$ of the projected support relation $R$; maximal blocks are the
+      maximal bicliques of $R$.
+      \item \textbf{Lifting benchmark (Theorem~\ref{thm:lifting}).}
+      On a block, if every probability measure on the underlying support is an admissible preparation, the
+      push-forward to joint outcome laws is surjective; every product of local states is jointly preparable.
+      Fundamental non-factorisation alone therefore obstructs nothing at this layer.
+      \item \textbf{Rank-one criterion (Theorem~\ref{thm:rankone}).}
+      For the family of normalised cylindrical conditionings of a strictly positive weight matrix $W$ on a
+      finite block, closure under products of independently locally conditioned states is equivalent to
+      $\rk W = 1$.
+      \item \textbf{Separation countermodel (Example~\ref{ex:n3}).}
+      A $2 \times 2$ block with weights $N_3 = \begin{psmallmatrix} 1 & 1 \\ 1 & 2 \end{psmallmatrix}$ has
+      complete rectangular support and a non-product-closed conditioning family: support rectangularity does
+      not imply preparation independence.
+      \item \textbf{Steering discipline (Definition~\ref{def:local-families}).}
+      Local state families must be generated by local conditionings only.
+      Margins of joint conditionings are steered conditional states; admitting them as local preparations
+      changes the witness count of the countermodel and manufactures spurious failures.
+    \end{enumerate}
+
+    The individual mathematical ingredients are elementary or standard; the contribution is their typed
+    assembly into a necessary support-and-preparation contract for emergent effective subsystems over a
+    non-factorising admissibility structure.
+
+  \subsection{What this paper does not claim}
+    \label{ssec:nonclaims}
+
+    No quantum tensor product is derived; no Born rule; no quantum fields; no local tomography.
+    The arena of Section~\ref{sec:arena} abstracts the composition problem motivated by the foundations
+    programme, but its realisation from the programme's axioms is not derived here; the hypotheses are a
+    contract, stated as such.
+    The reference measure of Section~\ref{sec:preparation}, its conditioning rule, and the physical
+    availability of convex mixing are construction choices.
+    The rank-one criterion is a criterion within the cylindrical-conditioning class; other admissible
+    preparation families require their own criteria.
+    All statements are finite; the strictly positive case carries the converse of
+    Theorem~\ref{thm:rankone}.
+
+  \section{The Arena: Substrate, Projections, and Conditional Preparations}
+  \label{sec:arena}
+
+  \subsection{Substrate and effective projections}
+    \label{ssec:substrate}
+
+    Let $\Om$ be a finite set of configurations and $\Aref \subseteq \Om$ a reference admissible subset.
+    Every device, setting, and boundary condition relevant to the situations described below is part of the
+    same $\Om$; combining two conditions never compares different spaces.
+
+    Two surjective maps
+    \begin{equation}
+      \PiA \colon \Om \to \OA,
+      \qquad
+      \PiB \colon \Om \to \OB
+    \end{equation}
+    are the effective projections of the two prospective subsystems, and
+    $\PiAB = (\PiA, \PiB) \colon \Om \to \OA \times \OB$ is their joint application.
+    The labels $A$ and $B$ name independently addressable effective subsystems, not spatial regions; the
+    construction precedes any geometry, and spatial regions would arise, if at all, as a later special case.
+    No factorisation $\Om \simeq \Om_A \times \Om_B$ is assumed, and none will be used.
+    The product appears only on the observable side, as the codomain of a pair of maps out of one undivided
+    substrate.
+
+  \subsection{Cylindrical conditions and the meet}
+    \label{ssec:conditions}
+
+    \begin{definition}[Cylindrical condition]
+      \label{def:cylindrical}
+      A local possibilistic condition on side $A$ is a subset of allowed outcomes $S_A \subseteq \OA$,
+      realised as
+      \begin{equation}
+        \AC{C_A} = \Aref \cap \PiA^{-1}(S_A),
+      \end{equation}
+      and symmetrically for side $B$.
+    \end{definition}
+
+    Local conditions of $A$ bear only on $A$, and those of $B$ only on $B$.
+    The conjunction of two conditions is their intersection:
+    \begin{equation}
+      \label{eq:meet}
+      \AC{C_A \wedge C_B} = \AC{C_A} \cap \AC{C_B}.
+    \end{equation}
+    The meet~\eqref{eq:meet} is commutative, associative, idempotent, and monotone (a strengthened condition
+    never enlarges the admissible set); it is partial (an empty intersection means incompatibility of the
+    two conditions, not an error); and it is extensional (two conditions selecting the same subset of $\Om$
+    are equivalent at this level).
+    If combining two devices changes admissibility other than by intersection, the meet is not widened:
+    the interaction is modelled by an explicit additional context or by enlarging $\Om$, so that
+    contextuality is never hidden inside the definition of~$\wedge$.
+
+  \subsection{The two composability tests}
+    \label{ssec:tests}
+
+    Fix condition sets $S_A \subseteq \OA$, $S_B \subseteq \OB$ and write
+    $\mathcal{M} = \AC{C_A} \cap \AC{C_B}$ for the meet support.
+    Independent composability of the two selections requires two properties, which we deliberately separate
+    because they fail differently.
+
+    \begin{definition}[Test 1: margin stability]
+      \label{def:test1}
+      $\PiA(\mathcal{M}) = \PiA(\AC{C_A})$ and $\PiB(\mathcal{M}) = \PiB(\AC{C_B})$: the condition imposed
+      at $B$ deletes no locally possible outcome at $A$, and conversely.
+    \end{definition}
+
+    \begin{definition}[Test 2: joint rectangularity]
+      \label{def:test2}
+      $\PiAB(\mathcal{M}) = \PiA(\mathcal{M}) \times \PiB(\mathcal{M})$: every pair of outcomes that remains
+      locally possible is jointly possible.
+    \end{definition}
+
+    Together the two tests are equivalent to the single equality
+    $\PiAB(\AC{C_A \wedge C_B}) = \PiA(\AC{C_A}) \times \PiB(\AC{C_B})$; separated, they diagnose why it
+    fails: cross restriction of margins, correlation of the joint support, or both.
+
+  \subsection{The bipartite reduction}
+    \label{ssec:reduction}
+
+    At the possibilistic level the whole structure is the relation
+    \begin{equation}
+      R = \PiAB(\Aref) \subseteq \OA \times \OB,
+    \end{equation}
+    with coordinate projections $\pi_A(R)$ and $\pi_B(R)$.
+    Extensional representatives of conditions are subsets $S_A \subseteq \pi_A(R)$ and
+    $S_B \subseteq \pi_B(R)$, the selected support is $R \cap (S_A \times S_B)$, and Test~2 asks whether the
+    selected bipartite subgraph is a complete biclique.
+    This reduction permits exhaustive verification on small examples with no probabilities, amplitudes, or
+    tensors (Appendix~\ref{app:repro}).
+
+  \section{The Possibilistic Layer: Independence Blocks are Bicliques}
+  \label{sec:possibilistic}
+
+  \begin{definition}[Independence block]
+    \label{def:block}
+    A pair $(S_A, S_B)$ of extensional condition sets is an \emph{independence block} of $R$ when Tests~1
+    and~2 both hold with nonempty selected support.
+  \end{definition}
+
+  \begin{theorem}[Blocks are bicliques]
+    \label{thm:blocks}
+    $(S_A, S_B)$ is an independence block of $R$ if and only if
+    $\emptyset \neq S_A \times S_B \subseteq R$.
+  \end{theorem}
+
+  \begin{proof}
+    If $S_A \times S_B \subseteq R$, the selected support is
+    $R \cap (S_A \times S_B) = S_A \times S_B$, whose margins are $S_A$ and $S_B$; both tests hold.
+    Conversely, write $\mathrm{sel} = R \cap (S_A \times S_B)$.
+    Test~2 gives $\mathrm{sel} = \pi_A(\mathrm{sel}) \times \pi_B(\mathrm{sel})$, and Test~1 identifies the
+    margins as $\pi_A(\mathrm{sel}) = S_A$ and $\pi_B(\mathrm{sel}) = S_B$; hence
+    $S_A \times S_B = \mathrm{sel} \subseteq R$.
+  \end{proof}
+
+  \begin{remark}[Order structure and formal concepts]
+    \label{rem:fca}
+    The nonempty independence blocks form the poset of nonempty rectangles contained in $R$, ordered by
+    componentwise inclusion.
+    Its maximal elements are the nonempty maximal bicliques of $R$, which correspond to the nondegenerate
+    formal concepts of the context $(\OA, \OB, R)$ in the sense of formal concept
+    analysis~\cite{GanterWille1999}.
+    The formal-concept lattice, however, is built on extent inclusion together with Galois closure; it is
+    not a lattice structure on all independence blocks under componentwise inclusion.
+    In the L-shaped relation of Table~\ref{tab:relations}, the two maximal blocks have no join: the
+    rectangle they generate contains the missing corner.
+  \end{remark}
+
+  \begin{remark}[Database reading]
+    \label{rem:database}
+    Cylindrical selection is the relational-algebra selection operator, and full rectangularity of a
+    relation is the trivial binary join dependency: $R$ decomposes losslessly as the product of its
+    projections~\cite{Fagin1977}.
+    Theorem~\ref{thm:blocks} is, in that vocabulary, a classification of the sub-selections of a
+    non-decomposable relation that are locally decomposable.
+  \end{remark}
+
+  \subsection{Five reference relations}
+    \label{ssec:relations}
+
+    Table~\ref{tab:relations} and Figure~\ref{fig:relations} report the exhaustive classification of five
+    reference relations; the enumeration is reproduced by the committed script
+    \texttt{code/possibilistic\_blocks.py}.
+
+    \begin{table}[ht]
+      \centering
+      \footnotesize
+      \begin{tabular}{l c c c c c}
+        \hline
+        Relation & pairs $(S_A, S_B)$ & Test~1 & Test~2 & blocks (nonempty) & maximal blocks \\
+        \hline
+        complete $2{\times}2$ & 16 & 10 & 16 & 9 & the full rectangle \\
+        diagonal $2{\times}2$ & 16 & 4 & 15 & 2 & $\{0\}{\times}\{0\}$, $\{1\}{\times}\{1\}$ \\
+        L-shape (three edges) & 16 & 7 & 15 & 5 & $\{0\}{\times}\{0,1\}$, $\{0,1\}{\times}\{0\}$ \\
+        two disjoint $2{\times}2$ rectangles & 256 & 100 & 175 & 18 & the two rectangles \\
+        6-cycle on $3{\times}3$ & 64 & 29 & 48 & 12 & six stars $K_{1,2}$ \\
+        \hline
+      \end{tabular}
+      \caption{Exhaustive two-test classification over extensional condition pairs.
+      Pair counts include the degenerate empty pair; block counts exclude it.}
+      \label{tab:relations}
+    \end{table}
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=\textwidth]{fig_relations}
+      \caption{The five reference relations (grey edges) with their maximal independence blocks highlighted
+      (coloured bicliques).
+      Generated by \texttt{code/make\_figures.py}.}
+      \label{fig:relations}
+    \end{figure}
+
+    The failure modes separate as follows.
+    On the diagonal relation the dominant failure is cross restriction of margins (12 of 16 pairs fail
+    Test~1); exactly one pair, the full selection, is margin-stable yet fails rectangularity.
+    Only trivial one-outcome subsystems compose on a perfectly correlated support; this is the context-wise
+    diagonal (or anti-diagonal) support pattern appearing in the Bell toy model of~\cite{Beau2026b}, not a
+    general characterisation of Bell scenarios.
+    The L-shape is the pure specimen of the second failure mode at full selection: margins stable, support
+    correlated by the missing corner.
+    The two disjoint rectangles produce a sector-like possibilistic decomposition: every block lives inside
+    one rectangle, every cross-sector selection fails by margin cutting or incompatibility.
+    The decomposition is analogous to a superselection pattern but is not an algebraic or operational
+    superselection rule, which would concern states, observables, or algebras rather than a relational
+    support.
+    The 6-cycle contains no $K_{2,2}$, so every block is a star: composition is possible only when one side
+    is pinned to a single outcome.
+
+  \section{The Preparation Layer: Weights Decide What Support Cannot}
+  \label{sec:preparation}
+
+    The possibilistic layer controls which outcome pairs are jointly possible.
+    It forgets two things: the multiplicities of the fibres $f^{-1}(a,b)$ of the restricted joint
+    projection, and the weights that preparations place on them.
+    This section shows that these forgotten data carry the whole question of preparation independence.
+
+  \subsection{The simplex-completion benchmark}
+    \label{ssec:benchmark}
+
+    Fix an independence block $S_A \times S_B \subseteq R$ and write $X = \AC{C_A \wedge C_B}$ for its meet
+    support and $f = \PiAB|_X \colon X \to S_A \times S_B$ for the restricted joint projection.
+    On a block, $f$ is surjective: that is exactly what the biclique provides.
+
+    \begin{theorem}[Lifting under simplex completion]
+      \label{thm:lifting}
+      If all probability measures on $X$ are admissible preparations, the push-forward
+      $f_* \colon \Delta(X) \to \Delta(S_A \times S_B)$ is surjective.
+      Explicitly, choosing one preimage $x(a,b) \in f^{-1}(a,b)$ for each pair, any joint law $\nu$ lifts as
+      $\sum_{(a,b)} \nu(a,b)\, \delta_{x(a,b)}$, affinely in $\nu$ for a fixed section.
+      In particular every product $\mu_A \otimes \mu_B$ with $\mu_A \in \Delta(S_A)$,
+      $\mu_B \in \Delta(S_B)$ is realised by an admissible preparation.
+    \end{theorem}
+
+    \begin{proof}
+      Immediate from surjectivity of $f$ on the block: the displayed lift is a probability measure on $X$
+      and pushes forward to $\nu$.
+    \end{proof}
+
+    The symbol $\otimes$ above is the product of measures on a product of outcome sets, which exists
+    set-theoretically on any block; it is not a tensor product of state spaces, and the composite state
+    space is precisely what remains unconstructed.
+
+    \begin{corollary}[Non-factorisation alone obstructs nothing]
+      \label{cor:noobstruction}
+      Once a biclique is available, the non-factorisation of $\Om$ does not by itself obstruct product
+      preparations.
+      Any obstruction comes from the restriction of the admissible preparation family.
+    \end{corollary}
+
+  \subsection{Preparation families and the steering discipline}
+    \label{ssec:families}
+
+    A preparation family over the block is a set $\mathcal{M}_{AB} \subseteq \Delta(X)$, with effective
+    image $\SAB = (\PiAB)_* \mathcal{M}_{AB}$.
+    Two control families calibrate the scale.
+    The deterministic family (Dirac measures only) realises every deterministic product
+    $\delta_a \otimes \delta_b$ on a block while offering no mixtures: preparability of outcomes and
+    preparability of mixtures are different properties.
+    The fibre-uniform family $L(\nu)(x) = \nu(a,b)/|f^{-1}(a,b)|$ for $x \in f^{-1}(a,b)$ is convex and
+    invariant under internal fibre permutations, yet satisfies $f_* L(\nu) = \nu$ identically: its effective
+    image is the full simplex.
+    Uniformity within fibres constrains microscopic lifts and constrains effective preparation weights not
+    at all.
+
+    The genuinely restrictive family used below conditions a reference measure.
+    Fix a positive measure $\lambda$ on $X$ and define, for nonempty $U \subseteq S_A$,
+    $V \subseteq S_B$ with fibre-weight matrix $w_{ab} = \lambda(f^{-1}(a,b))$,
+    \begin{equation}
+      \label{eq:conditioning}
+      p^{U,V}_{ab}
+      \;=\;
+      \frac{w_{ab}\, \mathbf{1}_U(a)\, \mathbf{1}_V(b)}
+           {\sum_{a' \in U,\, b' \in V} w_{a'b'}}.
+    \end{equation}
+    Neither $\lambda$ nor the conditioning rule is derived from admissibility; both are construction
+    choices, stated as such.
+
+    \begin{definition}[Local state families]
+      \label{def:local-families}
+      The joint family is $\SAB = \{ p^{U,V} : \emptyset \neq U \subseteq S_A,\ \emptyset \neq V \subseteq S_B \}$.
+      The \emph{local} state families use local conditions only:
+      \begin{equation}
+        \SAloc = \{ \pi_A\, p^{U, S_B} : \emptyset \neq U \subseteq S_A \},
+        \qquad
+        \SBloc = \{ \pi_B\, p^{S_A, V} : \emptyset \neq V \subseteq S_B \}.
+      \end{equation}
+    \end{definition}
+
+    The restriction in Definition~\ref{def:local-families} is a type discipline, not a convenience.
+    The margin $\pi_A\, p^{U,V}$ for $V \subsetneq S_B$ is a state of $A$ obtained by conditioning on $B$:
+    a steered conditional state in the sense made operational for quantum
+    assemblages~\cite{Schrodinger1935,Schrodinger1936,WisemanJonesDoherty2007}, transposed here to the
+    classical-measure level.
+    Steered states are not local preparations, and admitting them into $\SAloc$ changes theorems: on the
+    countermodel of Example~\ref{ex:n3} it inflates the local family from three states per side to five and
+    the failing pairs from five to seventeen, all the extra witnesses being illegitimate.
+
+  \subsection{The rank-one criterion}
+    \label{ssec:rankone}
+
+    \begin{theorem}[Product closure for cylindrical conditionings]
+      \label{thm:rankone}
+      Let $W = (w_{ab})$ be strictly positive on the finite block $S_A \times S_B$.
+      The family $\SAB$ is closed under products of independently locally conditioned states,
+      \begin{equation}
+        \forall\, \mu_A \in \SAloc,\ \forall\, \mu_B \in \SBloc \colon
+        \quad
+        \mu_A \otimes \mu_B \in \SAB,
+      \end{equation}
+      if and only if $\rk W = 1$, i.e.\ all $2 \times 2$ minors vanish:
+      $w_{ab} w_{a'b'} = w_{ab'} w_{a'b}$.
+    \end{theorem}
+
+    \begin{proof}
+      \emph{Direct direction.}
+      If $w_{ab} = \alpha_a \beta_b$, then $p^{U,V} = \alpha^U \otimes \beta^V$, where $\alpha^U$ and
+      $\beta^V$ are the normalised restrictions of $\alpha$ and $\beta$ to $U$ and $V$.
+      Every locally conditioned state is such a restriction, and the product of two restrictions is the
+      conditioning on the corresponding cylinder; every product therefore lies in $\SAB$.
+
+      \emph{Converse.}
+      The unconditioned margins $r = \pi_A\, p^{S_A, S_B}$ and $c = \pi_B\, p^{S_A, S_B}$ belong to
+      $\SAloc$ and $\SBloc$.
+      Closure demands $r \otimes c = p^{U,V}$ for some $U, V$.
+      Since $W$ is strictly positive, $r \otimes c$ has full support $S_A \times S_B$, while the support of
+      $p^{U,V}$ is $U \times V$; hence $U = S_A$ and $V = S_B$, so $p^{S_A,S_B} = r \otimes c$.
+      The normalised law is then a product of its margins, which is equivalent to $\rk W = 1$.
+    \end{proof}
+
+    \begin{remark}
+      \label{rem:nocoincidence}
+      There is no accidental coincidence with another conditioning in the converse: full support excludes it
+      immediately.
+      Strict positivity is exactly the block condition for counting-type measures ($n_{ab} \geq 1$ on a
+      biclique); for a general $\lambda$ it is an added hypothesis.
+      The single-law direction of the criterion --- a law is a product of its margins iff its matrix has rank
+      one --- is classical, and rank-one structure on a prescribed support is the quasi-independence model of
+      contingency-table analysis~\cite{Goodman1968}.
+      Theorem~\ref{thm:rankone} differs in statement type: it is a closure property of the entire
+      conditioning family, quantified over locally conditioned states, with the full-support converse; the
+      statement is elementary in substance and, to the author's knowledge, new as formulated.
+    \end{remark}
+
+  \subsection{The separation countermodel}
+    \label{ssec:countermodel}
+
+    \begin{example}[$N_3$: rectangular support, correlated preparations]
+      \label{ex:n3}
+      On the complete $2 \times 2$ biclique take counting weights
+      \begin{equation}
+        N_1 = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix},
+        \qquad
+        N_2 = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix},
+        \qquad
+        N_3 = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}.
+      \end{equation}
+      $N_1$ is uniform and factorising; $N_2$ is non-uniform and factorising (rank one); both families are
+      product-closed, with three local states per side and nine conditioned laws.
+      $N_3$ has minor $1 \neq 0$: its family fails closure on exactly five of the nine local pairs --- the
+      four products of a deterministic state with the opposite unconditioned margin, and the product of the
+      two unconditioned margins
+      \begin{equation}
+        \mu_A = \mu_B = \left( \tfrac{2}{5}, \tfrac{3}{5} \right),
+        \qquad
+        \mu_A \otimes \mu_B
+        = \begin{pmatrix} 4/25 & 6/25 \\ 6/25 & 9/25 \end{pmatrix}.
+      \end{equation}
+      The product has full support; the only conditioned law with full support is the unconditioned law
+      $\tfrac{1}{5} N_3$, and the two differ.
+    \end{example}
+
+    The two layers are therefore provably distinct:
+    \begin{quote}
+      the biclique controls the possibilistic zeros; the rank of $W$ controls the correlations of the
+      chosen measure.
+      Support rectangularity does not imply preparation independence.
+    \end{quote}
+    Non-uniformity is irrelevant ($N_2$); only rank matters.
+
+  \section{Position within the Neighbouring Literature}
+  \label{sec:position}
+
+    The raw materials of this paper live in six developed literatures; we state for each what is shared,
+    what differs, and why the present assembly is not subsumed.
+
+    \paragraph{Formal concept analysis.}
+    Maximal bicliques of a binary relation are the formal concepts of its context, organised by the Galois
+    connection into the concept lattice~\cite{GanterWille1999}.
+    Theorem~\ref{thm:blocks} borrows the objects, not the question: FCA studies the closure structure of a
+    relation, while the two-test contract asks which cylinder selections compose, and the block poset under
+    componentwise inclusion is not the concept lattice (Remark~\ref{rem:fca}).
+
+    \paragraph{Database dependency theory.}
+    Rectangularity is lossless join decomposability, and multivalued dependencies characterise
+    it~\cite{Fagin1977}.
+    The present use is local: a classification of the decomposable sub-selections of a globally
+    non-decomposable relation, read as a composition arena rather than as a schema-design constraint.
+
+    \paragraph{Contingency tables.}
+    Rank-one is the classical independence criterion, and rank-one on a prescribed support is
+    quasi-independence~\cite{Goodman1968}.
+    The statistical literature fits and tests these as models of data; Theorem~\ref{thm:rankone} instead
+    characterises closure of a preparation family, a statement about which mixtures are jointly realisable,
+    with the steering discipline deciding which margins count as local.
+
+    \paragraph{Generalized probabilistic theories.}
+    Local tomography is the axiom separating complex quantum theory from its real and quaternionic
+    variants, and composite systems are primitive in the framework~\cite{Hardy2001,Barrett2007,
+    ChiribellaDArianoPerinotti2011}.
+    The present paper works one level below: it asks when independently addressable subsystems and product
+    preparations exist at all, from projections on a non-factorising substrate, and treats the operational
+    composite as the object to be earned rather than assumed.
+    The corpus position that the GPT duality is a structure whose emergence is in question rather than a
+    starting point~\cite{Beau2026l} is the mandate for that order of construction.
+
+    \paragraph{Steering.}
+    The distinction between states remotely selected by conditioning and states locally prepared goes back
+    to Schr\"{o}dinger~\cite{Schrodinger1935,Schrodinger1936} and was made operational
+    in~\cite{WisemanJonesDoherty2007}.
+    Definition~\ref{def:local-families} transposes the cut to classical measures over a substrate, where it
+    is already load-bearing: it changes the witness set of Example~\ref{ex:n3}.
+
+    \paragraph{Contextuality and induced subsystem structure.}
+    Possibilistic empirical models over measurement covers, and the sheaf-theoretic characterisation of
+    contextuality as obstruction to global sections, share the raw object of
+    Section~\ref{sec:possibilistic} --- a support relation --- but ask a different question of
+    it~\cite{AbramskyBrandenburger2011}.
+    Inside quantum theory, tensor product structures are induced by distinguished observable algebras
+    rather than given~\cite{Zanardi2001,ZanardiLidarLloyd2004}; the present construction is a pre-Hilbert
+    analogue in which even the possibilistic and convex prerequisites of a composite are conditional.
+    The 6-cycle motif of Table~\ref{tab:relations} is the standard shape of possibilistic contextuality
+    arguments; no link is asserted beyond the shared combinatorics.
+
+  \section{Discussion}
+  \label{sec:discussion}
+
+  \subsection{Consequences for the programme}
+    \label{ssec:consequences}
+
+    The results are logically independent of the programme's carrier-selection and continuum chokepoints:
+    no Heisenberg carrier, no Weil representation, no complex structure, and no geometry is consumed.
+    They are compatible with any conditional realisation of those structures.
+    What they contradict is a sufficiency reading: selecting a carrier does not by itself provide two
+    independently preparable subsystems, a composition rule, a product-closed preparation family, an effect
+    space, or local tomography; and a future spatial continuum would not by itself make disjoint regions
+    independent subsystems, since the block condition and a preparation-closure condition would still have
+    to hold.
+    In the vocabulary of~\eqref{eq:k4}: the support and preparation preconditions of K4 are now
+    characterised, its states-and-effects layer is untouched, and the corpus constructions that consume a
+    composite~\cite{Beau2026q3,Beau2026entnote} retain their results conditionally on the supplied
+    structure.
+
+  \subsection{Interpretive outlook}
+    \label{ssec:outlook}
+
+    The following reading is interpretation --- a structural way of situating the results --- and not itself
+    a result.
+    Fundamental non-factorisation does not forbid independent effective subsystems.
+    It relocates their independence: from an inherited property of the substrate to an emergent property of
+    the projected support (which pairs of outcomes are jointly possible) and of the preparation weights
+    (which mixtures are jointly realisable).
+    What a laboratory calls ``two systems'' is, in this reading, a region of the theory where both layers
+    cooperate --- a biclique carrying a rank-one weight structure --- and the existence of such regions is a
+    constraint on any future dictionary between the substrate description and operational physics, not a
+    free assumption.
+
+  \subsection{Limits and future work}
+    \label{ssec:limits}
+
+    The limits are those stated in Section~\ref{ssec:nonclaims}.
+    Natural extensions, none of which affects the finite proofs above, include: weight matrices with zeros
+    inside the block; approximate independence, with quantitative bounds in total variation, mutual
+    information, or normalised minors when $\rk W \approx 1$; the measurable, non-finite case; the
+    states-and-effects layer over a rank-one family, where local tomography first becomes statable for this
+    construction; and the possible use of composed-probability coherence to constrain quantitative weight
+    laws in the foundations programme.
+
+  \section*{Acknowledgements}
+    Portions of the analysis and editorial preparation benefited from iterative interactions with large
+    language models used as analytical assistants.
+    All claims and final formulations remain the sole responsibility of the author.
+
+  \appendix
+
+  \section{Reproduction}
+  \label{app:repro}
+
+    All numerical claims are reproduced by two deterministic scripts using exact rational arithmetic and no
+    dependencies beyond the Python standard library:
+    \begin{itemize}
+      \item \texttt{code/possibilistic\_blocks.py} --- exhaustive two-test classification of the five
+      relations of Table~\ref{tab:relations};
+      \item \texttt{code/convex\_preparation\_tests.py} --- families and matrices of
+      Section~\ref{sec:preparation}, with the local state families of Definition~\ref{def:local-families}.
+    \end{itemize}
+    Figure~\ref{fig:relations} is generated by the script \texttt{code/make\_figures.py}, under the pinned
+    environment recorded in \texttt{code/requirements.txt}.
+    From a fresh clone:
+    \begin{verbatim}
+python3 code/possibilistic_blocks.py
+python3 code/convex_preparation_tests.py
+bash build.sh
+    \end{verbatim}
+    The scripts print the full inventories; \texttt{build.sh} regenerates the figure, verifies it against
+    \texttt{ARTIFACT\_SHA256SUMS}, and compiles the paper.
+
+  \clearpage
+  \bibliographystyle{plain}
+  \bibliography{cosmochrony-bibliography,external-refs}
+
+\end{document}
