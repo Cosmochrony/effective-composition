@@ -23,24 +23,24 @@ fi
 
 export TEXINPUTS=".:./tex:${TEXINPUTS}"
 
-echo -e "${GREEN}Step 1/5: First pdflatex run${NC}"
+echo -e "${GREEN}Step 1/4: First pdflatex run${NC}"
 pdflatex -file-line-error -interaction=nonstopmode -synctex=1 \
     -output-directory="$OUTPUT_DIR" \
     -recorder \
     "$TEX_FILE"
 
-echo -e "${GREEN}Step 2/5: Running bibtex${NC}"
+echo -e "${GREEN}Step 2/4: Running bibtex${NC}"
 cd "$OUTPUT_DIR"
 BSTINPUTS="../tex:${BSTINPUTS}" BIBINPUTS="../tex:${BIBINPUTS}" bibtex "$MAIN_NAME"
 cd ..
 
-echo -e "${GREEN}Step 3/5: Second pdflatex run${NC}"
+echo -e "${GREEN}Step 3/4: Second pdflatex run${NC}"
 pdflatex -file-line-error -interaction=nonstopmode -synctex=1 \
     -output-directory="$OUTPUT_DIR" \
     -recorder \
     "$TEX_FILE"
 
-echo -e "${GREEN}Step 4/5: Third pdflatex run${NC}"
+echo -e "${GREEN}Step 4/4: Third pdflatex run${NC}"
 pdflatex -file-line-error -interaction=nonstopmode -synctex=1 \
     -output-directory="$OUTPUT_DIR" \
     -recorder \

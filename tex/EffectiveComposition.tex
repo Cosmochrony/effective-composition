@@ -12,6 +12,12 @@
 \usepackage{doi}
 \geometry{margin=2.5cm}
 \setlength{\emergencystretch}{2em}
+\hypersetup{
+  pdftitle={Independent Effective Subsystems under Non-Injective Admissibility: Exact Support and Preparation Criteria},
+  pdfauthor={Jérôme Beau},
+  pdfsubject={Support and preparation criteria for emergent effective subsystem composition},
+  pdfkeywords={non-injective projection, effective subsystems, emergent composition, bicliques, rank one, steering}
+}
 
 \input{glyphtounicode}
 \pdfgentounicode=1
@@ -39,8 +45,8 @@
 \newcommand{\SBloc}{\mathcal{S}_B^{\mathrm{loc}}}
 \newcommand{\rk}{\operatorname{rank}}
 
-\title{Independent Effective Subsystems from Non-Injective Admissibility:\\
-Support and Preparation Criteria}
+\title{Independent Effective Subsystems under Non-Injective Admissibility:\\
+Exact Support and Preparation Criteria}
 
 \author{J\'{e}r\^{o}me Beau\\
 \small Independent Researcher}
@@ -54,19 +60,19 @@ Support and Preparation Criteria}
   \begin{abstract}
     A recurring assumption in emergent-physics programmes is that once a fundamental description is given,
     the decomposition of the world into independently preparable subsystems comes for free.
-    We show that on a non-factorising substrate this assumption splits into two separate, checkable layers,
-    and we characterise both exactly in the finite case.
-    The arena is a finite configuration set $\Om$ carrying a reference admissible subset, two non-injective
-    effective projections $\PiA \colon \Om \to \OA$ and $\PiB \colon \Om \to \OB$, and cylindrical
-    admissibility conditions combined by intersection; no factorisation $\Om \simeq \Om_A \times \Om_B$ is
-    assumed at any point.
+    We show that on a substrate not supplied with a subsystem factorisation this assumption splits into two
+    separate, checkable layers, and we characterise both exactly in the finite case.
+    The arena is a finite configuration set $\Om$ carrying a reference admissible subset, two effective
+    projections $\PiA \colon \Om \to \OA$ and $\PiB \colon \Om \to \OB$ that are not assumed injective, and
+    cylindrical admissibility conditions combined by intersection; no factorisation
+    $\Om \simeq \Om_A \times \Om_B$ is assumed at any point.
     At the possibilistic layer, we prove that the pairs of local outcome sets on which joint interrogation
     is margin-stable and jointly rectangular --- the \emph{independence blocks} --- are exactly the nonempty
     rectangles (bicliques) contained in the projected support relation.
     At the preparation layer, we prove a benchmark and a criterion.
     The benchmark: on any block, if all probability measures on the underlying support are admissible
     preparations, every joint outcome law, in particular every product law, lifts to the substrate; fundamental
-    non-factorisation alone therefore obstructs nothing.
+    the absence of a supplied substrate factorisation alone therefore obstructs nothing.
     The criterion: for the family of normalised cylindrical conditionings of a strictly positive reference
     weight matrix $W$, closure under products of independently locally conditioned states holds if and only
     if $W$ has rank one.
@@ -75,13 +81,14 @@ Support and Preparation Criteria}
     A type discipline runs through both layers: states of one side obtained by conditioning on the other are
     steered conditional states, not local preparations, and admitting them manufactures spurious witnesses.
     The individual mathematical ingredients are elementary or standard; the contribution is their typed
-    assembly into a necessary support-and-preparation contract for emergent effective subsystems over a
-    non-factorising admissibility structure.
+    assembly into a necessary support-and-preparation contract for emergent effective subsystems over an
+    admissibility structure without a supplied subsystem factorisation.
     The hypotheses abstract the composition problem motivated by the non-injective foundations programme,
     but their realisation from the programme's axioms is not derived here.
-    \emph{Interpretive reading (structural, not a result):} fundamental non-factorisation does not forbid
-    independent effective subsystems; it relocates their independence from an inherited property of the
-    substrate to an emergent property of the projected support and of the preparation weights.
+    \emph{Interpretive reading (structural, not a result):} the absence of a fundamental subsystem
+    factorisation does not forbid independent effective subsystems; it relocates their independence from an
+    inherited property of the substrate to an emergent property of the projected support and of the
+    preparation weights.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -98,24 +105,26 @@ Support and Preparation Criteria}
   \subsection{The composition gap}
     \label{ssec:gap}
 
-    The non-injective foundations programme~\cite{Beau2026m,Beau2026ninote} describes observable physics as
+    The non-injective foundations programme~\cite{Beau2026m} describes observable physics as
     the image of a many-to-one projection from a relational substrate.
     Non-injectivity is structurally forced for genuine emergence~\cite{Beau2026l}, and its observable
     signatures include Bell-type correlations obtained without any subsystem decomposition of the underlying
     configuration space~\cite{Beau2026b}.
-    The substrate of that argument is explicitly non-factorising: no split $\Om \simeq \Om_A \times \Om_B$
-    is imposed, and the measurement regions exist only at the level of observable descriptions.
+    The substrate of that argument is not supplied with a subsystem factorisation: no split
+    $\Om \simeq \Om_A \times \Om_B$ is imposed, and the measurement regions exist only at the level of
+    observable descriptions.
 
     This creates a gap on the other side of the ledger.
     Laboratory physics is organised around \emph{independent subsystems}: systems that can be addressed
     separately, prepared independently, and recombined, with joint statistics generated from local ones.
-    If the substrate does not factorise, none of this is given.
+    If the substrate is not supplied with a subsystem factorisation, none of this is given.
     The present paper asks the resulting question in its sharpest finite form:
 
     \begin{quote}
-      On a substrate that does not factorise, equipped with non-injective observable projections, when do
-      independently addressable and preparable effective subsystems exist --- and what exactly must be added,
-      at the support level and at the preparation level, for independent composition to be possible?
+      On a substrate without a supplied subsystem factorisation, equipped with effective projections that
+      are not assumed injective, when do independently addressable and preparable effective subsystems exist
+      --- and what exactly must be added, at the support and preparation levels, for independent composition
+      to be possible?
     \end{quote}
 
   \subsection{A missing transversal contract}
@@ -133,11 +142,11 @@ Support and Preparation Criteria}
     \begin{equation}
       \label{eq:k4}
       \mathrm{K4}\colon\quad
-      \text{non-factorising admissibility}
-      \;\dashrightarrow\;
-      \text{composable effective subsystems}.
+      \mathsf{Admissibility}
+      \;\longrightarrow\;
+      \mathsf{Composable\ effective\ subsystems}.
     \end{equation}
-    The dashed arrow is the open bridge.
+    The arrow is the open bridge; its source carries no supplied subsystem factorisation.
     This paper closes two preconditions of~\eqref{eq:k4} --- the support layer and the preparation layer ---
     and leaves open its states-and-effects layer: the construction of effect spaces, their bilinear pairing
     with states, local tomography, and any quantum tensor product.
@@ -157,7 +166,7 @@ Support and Preparation Criteria}
       \item \textbf{Lifting benchmark (Theorem~\ref{thm:lifting}).}
       On a block, if every probability measure on the underlying support is an admissible preparation, the
       push-forward to joint outcome laws is surjective; every product of local states is jointly preparable.
-      Fundamental non-factorisation alone therefore obstructs nothing at this layer.
+      The absence of a supplied substrate factorisation alone therefore obstructs nothing at this layer.
       \item \textbf{Rank-one criterion (Theorem~\ref{thm:rankone}).}
       For the family of normalised cylindrical conditionings of a strictly positive weight matrix $W$ on a
       finite block, closure under products of independently locally conditioned states is equivalent to
@@ -173,13 +182,13 @@ Support and Preparation Criteria}
     \end{enumerate}
 
     The individual mathematical ingredients are elementary or standard; the contribution is their typed
-    assembly into a necessary support-and-preparation contract for emergent effective subsystems over a
-    non-factorising admissibility structure.
+    assembly into a necessary support-and-preparation contract for emergent effective subsystems over an
+    admissibility structure without a supplied subsystem factorisation.
 
   \subsection{What this paper does not claim}
     \label{ssec:nonclaims}
 
-    No quantum tensor product is derived; no Born rule; no quantum fields; no local tomography.
+    This paper derives no quantum tensor product, Born rule, quantum field, or local-tomography property.
     The arena of Section~\ref{sec:arena} abstracts the composition problem motivated by the foundations
     programme, but its realisation from the programme's axioms is not derived here; the hypotheses are a
     contract, stated as such.
@@ -200,7 +209,7 @@ Support and Preparation Criteria}
     Every device, setting, and boundary condition relevant to the situations described below is part of the
     same $\Om$; combining two conditions never compares different spaces.
 
-    Two surjective maps
+    Two maps
     \begin{equation}
       \PiA \colon \Om \to \OA,
       \qquad
@@ -210,9 +219,13 @@ Support and Preparation Criteria}
     $\PiAB = (\PiA, \PiB) \colon \Om \to \OA \times \OB$ is their joint application.
     The labels $A$ and $B$ name independently addressable effective subsystems, not spatial regions; the
     construction precedes any geometry, and spatial regions would arise, if at all, as a later special case.
-    No factorisation $\Om \simeq \Om_A \times \Om_B$ is assumed, and none will be used.
+    No physically distinguished factorisation $\Om \simeq \Om_A \times \Om_B$ is assumed, and none will be
+    used.
     The product appears only on the observable side, as the codomain of a pair of maps out of one undivided
     substrate.
+    Accordingly, ``without a supplied factorisation'' means that no such identification or subsystem maps
+    belong to the physical data; it does not claim that the finite set $\Om$ admits no accidental bijection
+    with some Cartesian product.
 
   \subsection{Cylindrical conditions and the meet}
     \label{ssec:conditions}
@@ -335,6 +348,7 @@ Support and Preparation Criteria}
     \begin{table}[ht]
       \centering
       \footnotesize
+      \setlength{\tabcolsep}{4.5pt}
       \begin{tabular}{l c c c c c}
         \hline
         Relation & pairs $(S_A, S_B)$ & Test~1 & Test~2 & blocks (nonempty) & maximal blocks \\
@@ -410,10 +424,10 @@ Support and Preparation Criteria}
     set-theoretically on any block; it is not a tensor product of state spaces, and the composite state
     space is precisely what remains unconstructed.
 
-    \begin{corollary}[Non-factorisation alone obstructs nothing]
+    \begin{corollary}[Absence of a supplied factorisation alone obstructs nothing]
       \label{cor:noobstruction}
-      Once a biclique is available, the non-factorisation of $\Om$ does not by itself obstruct product
-      preparations.
+      Once a biclique is available, the absence of a supplied subsystem factorisation on $\Om$ does not by
+      itself obstruct product preparations.
       Any obstruction comes from the restriction of the admissible preparation family.
     \end{corollary}
 
@@ -574,12 +588,15 @@ Support and Preparation Criteria}
     with the steering discipline deciding which margins count as local.
 
     \paragraph{Generalized probabilistic theories.}
-    Local tomography is the axiom separating complex quantum theory from its real and quaternionic
-    variants, and composite systems are primitive in the framework~\cite{Hardy2001,Barrett2007,
-    ChiribellaDArianoPerinotti2011}.
+    Local tomography is a standard composition axiom in operational reconstructions and is among the
+    conditions that distinguish complex quantum theory from real and quaternionic variants; generalised
+    probabilistic theories take state and effect spaces, together with admissible composition rules, as
+    operational input~\cite{Hardy2001,Barrett2007,ChiribellaDArianoPerinotti2011}.
+    Recent work also shows that single-system quantum structure and Bell-like correlations do not uniquely
+    determine the composition rule~\cite{ErbaPerinotti2024}.
     The present paper works one level below: it asks when independently addressable subsystems and product
-    preparations exist at all, from projections on a non-factorising substrate, and treats the operational
-    composite as the object to be earned rather than assumed.
+    preparations exist at all, from projections on a substrate without a supplied factorisation, and treats
+    the operational composite as the object to be earned rather than assumed.
     The corpus position that the GPT duality is a structure whose emergence is in question rather than a
     starting point~\cite{Beau2026l} is the mandate for that order of construction.
 
@@ -625,11 +642,11 @@ Support and Preparation Criteria}
 
     The following reading is interpretation --- a structural way of situating the results --- and not itself
     a result.
-    Fundamental non-factorisation does not forbid independent effective subsystems.
+    The absence of a fundamental subsystem factorisation does not forbid independent effective subsystems.
     It relocates their independence: from an inherited property of the substrate to an emergent property of
     the projected support (which pairs of outcomes are jointly possible) and of the preparation weights
     (which mixtures are jointly realisable).
-    What a laboratory calls ``two systems'' is, in this reading, a region of the theory where both layers
+    What a laboratory calls ``two systems'' is, in this reading, a regime of the theory where both layers
     cooperate --- a biclique carrying a rank-one weight structure --- and the existence of such regions is a
     constraint on any future dictionary between the substrate description and operational physics, not a
     free assumption.
@@ -674,7 +691,6 @@ bash build.sh
     The scripts print the full inventories; \texttt{build.sh} regenerates the figure, verifies it against
     \texttt{ARTIFACT\_SHA256SUMS}, and compiles the paper.
 
-  \clearpage
   \bibliographystyle{plain}
   \bibliography{cosmochrony-bibliography,external-refs}
 

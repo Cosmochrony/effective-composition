@@ -19,7 +19,14 @@ SOURCE_DATE_EPOCH=0 python3 code/make_figures.py
 
 echo -e "${GREEN}=== Step 2: artefact checksums ===${NC}"
 if [ -f ARTIFACT_SHA256SUMS ]; then
-    shasum -a 256 -c ARTIFACT_SHA256SUMS
+    if command -v shasum >/dev/null 2>&1; then
+        shasum -a 256 -c ARTIFACT_SHA256SUMS
+    elif command -v sha256sum >/dev/null 2>&1; then
+        sha256sum -c ARTIFACT_SHA256SUMS
+    else
+        echo -e "${RED}Neither shasum nor sha256sum is available${NC}"
+        exit 1
+    fi
 else
     echo -e "${RED}ARTIFACT_SHA256SUMS missing${NC}"
     exit 1
