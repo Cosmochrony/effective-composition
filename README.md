@@ -98,6 +98,7 @@ bash build.sh
 ## Links
 
 - 🌐 Website: https://cosmochrony.org/science/non-injective/effective-composition/
+- ➡️ Companion paper: [States-Effects Tomography](https://github.com/Cosmochrony/states-effects-tomography) resolves this paper's states-and-effects layer's finite, mono-system, and bipartite-composition content (Theorem 4.4 imported unchanged); the general preparation layer and the tensor product remain open, exactly as left here.
 
 ## Acknowledgements
 
